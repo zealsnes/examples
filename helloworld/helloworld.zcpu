@@ -6,7 +6,7 @@ header
 	CatridgeName = "HELLO WORLD SNES"
 	RomSpeed = SlowROM
 	MapMode = LoROM
-	SramSize =  0
+	SramSize = 0
 	Country = Japan
 	Developer = 0
 	Version = 0
@@ -153,6 +153,10 @@ procedure Main
 	lda #$0000
 	sta $00
 	sta $02
+	
+	; Address found via assembling a similar file with bass
+	; Temporary until we support labels
+	jmp $8122
 }
 
 ; interrupt automatically adds 'rti' (ReTurn from Interrupt) at the end of the scope
