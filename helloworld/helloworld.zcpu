@@ -153,10 +153,9 @@ procedure Main
 	lda #$0000
 	sta $00
 	sta $02
-	
-	; Address found via assembling a similar file with bass
-	; Temporary until we support labels
-	jmp $8122
+
+mainLoop:
+	jmp mainLoop
 }
 
 ; interrupt automatically adds 'rti' (ReTurn from Interrupt) at the end of the scope
@@ -166,13 +165,12 @@ interrupt NMI_CycleColor
 	rep #$30
 	pha
 
-	; We don't support labels yet
-	;sep #$20
-	;lda $02
-	;inc
-	;and #$03
-	;sta $02
-	;bne EndNMI
+	sep #$20
+	lda $02
+	inc
+	and #$03
+	sta $02
+	bne EndNMI
 
 	rep #$20
 	lda $00
@@ -187,7 +185,7 @@ interrupt NMI_CycleColor
 	and #$7F
 	sta $2122
 
-;EndNMI:
+EndNMI:
 	rep #$30
 	pla
 	plp
