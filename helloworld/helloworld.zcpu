@@ -1,20 +1,23 @@
-; Hello World
+; Hello World Zeal SNES
 ; Flash the background with every color available in the palette
 
+; The header statement specify the ROM header
+; The statement is optional but it's crucial for determining the Rom Speed and the Map Mode
 header
 {
-	CatridgeName = "HELLO WORLD SNES"
-	RomSpeed = SlowROM
-	MapMode = LoROM
+	CartridgeName = "HELLO WORLD SNES"
+	RomSpeed = SlowROM ; By default the RomSpeed is SlowROM
+	MapMode = LoROM ; By default the MapMode is LoROM
 	SramSize = 0
-	Country = Japan
+	Country = Japan ; By default the Country is Japan
 	Developer = 0
 	Version = 0
 }
 
+; The vectors statement tells the various entry points
+; required for the ROM such as Reset and NMI
 vectors
 {
-	COP = EmptyVector
 	BRK = EmptyVector
 	IRQ = EmptyVector
 	NMI = NMI_CycleColor
